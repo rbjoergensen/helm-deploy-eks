@@ -1,8 +1,9 @@
 #!/bin/sh -l
 
-echo "Hello $1"
+aws configure set aws_access_key_id $access_key
+aws configure set aws_secret_access_key $secret_key
+aws configure set default.region $region
 
-ls -la
+response=$(aws eks list-clusters)
 
-time=$(date)
-echo "::set-output name=time::$time"
+echo "::set-output name=response::$response"

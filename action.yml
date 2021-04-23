@@ -1,16 +1,26 @@
-# action.yml
-name: 'Hello World'
-description: 'Greet someone and record the time'
+name: 'helm-deploy-eks'
+description: 'Run a helm command against an EKS cluster using an access and secret key'
 inputs:
-  who-to-greet:  # id of input
-    description: 'Who to greet'
+  command:
+    description: "Your command (kubectl or helm)"
     required: true
-    default: 'World'
+  access_key:
+    description: "AWS Access Key"
+    required: true
+  secret_key:
+    description: "AWS Secret Key"
+    required: true
+  region:
+    description: "The region the cluster is deployed in"
+    required: true
 outputs:
-  time: # id of output
-    description: 'The time we greeted you'
+  result:
+    description: "Output returned by your Helm or kubectl command"
 runs:
-  using: 'docker'
-  image: 'Dockerfile'
+  using: "docker"
+  image: "Dockerfile"
   args:
-    - ${{ inputs.who-to-greet }}
+    - ${{ inputs.command }}
+    - ${{ inputs.access_key }}
+    - ${{ inputs.secret_key }}
+    - ${{ inputs.region }}
