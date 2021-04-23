@@ -27,3 +27,4 @@ runs:
     - ${{ inputs.access_key }}
     - ${{ inputs.secret_key }}
     - ${{ inputs.region }}
+    - ${{ inputs.cluster_name }}
