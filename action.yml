@@ -13,6 +13,9 @@ inputs:
   region:
     description: "The region the cluster is deployed in"
     required: true
+  cluster_name:
+    description: "The name of the EKS cluster"
+    required: true
 outputs:
   result:
     description: "Output returned by your Helm or kubectl command"
